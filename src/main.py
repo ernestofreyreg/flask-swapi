@@ -50,7 +50,15 @@ def people():
     
     return jsonify(response)
 
+
+@app.route('/people/<int:people_id>', methods=['GET'])
+def people_by_id(people_id):
+    people = People.query.get(people_id)
+
+    response = people.serialize()
     
+    return jsonify(response)
+
 
 
 # this only runs if `$ python src/main.py` is executed

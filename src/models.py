@@ -24,6 +24,7 @@ class People(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     homeplanet_id = db.Column(db.Integer, db.ForeignKey('planet.id'))
     homeplanet = db.relationship('Planet')
+    eye_color = db.Column(db.String(20))
 
     def __repr__(self):
         return self.name
@@ -32,7 +33,8 @@ class People(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "homeplanet": self.homeplanet.name
+            "homeplanet": self.homeplanet.name,
+            "eye_color": self.eye_color
         }
 
 
